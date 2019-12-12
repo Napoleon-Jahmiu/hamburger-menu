@@ -15,7 +15,7 @@
    height: 50px;
    z-index: 2;
    cursor: pointer;
-   opacity: 0.8;
+   opacity: 0;
 }
 
 /* to create and position the hamburger menu */
@@ -31,6 +31,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.4s ease;
 }
 
 /* used to create the Hamburger lines */
@@ -43,6 +44,7 @@
     background: #fff;
     align-items: center;
     justify-content: center;
+    transition: all 0.4s ease;
 }
 
 /* Hamburger Lines: Top and Bottom */
@@ -62,3 +64,18 @@
     top: 10px;
 }
 
+/* Toggler animation */
+.menu-wrap .toggler:checked + .hamburger > div {
+    transform: rotate(45deg);
+}
+ 
+/* Turn hamburger lines into X */
+.menu-wrap .toggler:checked + .hamburger > div::after,
+.menu-wrap .toggler:checked + .hamburger > div::before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.menu-wrap .toggler:checked:hover + .hamburger > div {
+    transform: rotate(225deg);
+}
