@@ -31,7 +31,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.4s ease;
 }
 
 /* used to create the Hamburger lines */
@@ -76,6 +75,84 @@
     transform: rotate(90deg);
 }
 
+/* makes hamburger lines that turn X to rotate when hover over it to the specified degree */
 .menu-wrap .toggler:checked:hover + .hamburger > div {
     transform: rotate(225deg);
+}
+/* Show menu */
+.menu-wrap .toggler:checked ~ .menu {
+    visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div {
+    transform: scale(1);
+    transition-duration: var(--menu-speed);
+}
+
+.menu-wrap .toggler:checked ~ .menu div div {
+    opacity: 1;
+    transition: opacity 0.3s ease 0.2s;
+}
+/* This is for the menu  to be fixed in the middle of the page as designed 
+(Though the menu can be at any position as one wish. But in this project, its 
+is in the middle)*/
+.menu-wrap .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*This section is for styling the div immediately after the menu.
+This div houses the overlay of the menu bar over the home screen bar  */
+.menu-wrap .menu > div {
+    background: var(--overlay-color);
+    width: 200vw;
+    height: 200vw;
+    /* the border radius takes effect on the account of setting flex to none */
+    border-radius: 50%;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.4s ease;
+}
+
+/* This is the menu div that wraps the text part. very immediate to the ul */
+.menu-wrap .menu > div > div {
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* This part is to style the list items as we want and nothing more */
+.menu-wrap .menu > div > div > ul > li {
+    list-style: none;
+    color: white;
+    padding: 5px;
+    font-size: 1.5em;
+}
+
+/* This is to give the links in the list items the required styling */
+.menu-wrap .menu > div > div > ul > li > a {
+    color: inherit;
+    text-decoration: none;
+    /* transition: color 0.6s ease-in-out; */
+}
+
+/* this section to to style the hover of the links */
+.menu-wrap .menu > div > div > ul > li > a:hover {
+    color: var(--secondary-color);
+    opacity: 0.8;
+    font-size: 1.7rem;
+    transition: all 0.4s ease-in-out;
 }
